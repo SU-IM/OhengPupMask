@@ -163,8 +163,10 @@ export function computeOheng(date: Date) {
     apply(d.stem, d.branch, 3);
     apply(h.stem, h.branch, 2);
 
-    Object.keys(counts).forEach(k => counts[k] = clamp(counts[k], 0, 10));
-    return counts;
+    Object.keys(counts).forEach(k => {
+        const key = k as keyof typeof counts;
+        counts[key] = clamp(counts[key], 0, 10);
+    });
 }
 
 // ---------------------------
