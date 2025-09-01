@@ -147,13 +147,16 @@ export function computeOheng(date: Date) {
     const counts = { wood: 0, fire: 0, earth: 0, metal: 0, water: 0 };
 
     const apply = (stem: string, branch: string, weight: number) => {
-        if (stem && STEM_TO_ELEMENT[stem]) counts[STEM_TO_ELEMENT[stem]] += weight;
+        if (stem && STEM_TO_ELEMENT[stem]) {
+            counts[STEM_TO_ELEMENT[stem] as keyof typeof counts] += weight;
+        }
         if (branch && BRANCH_TO_ELEMENTS[branch]) {
             for (const { el, w } of BRANCH_TO_ELEMENTS[branch]) {
-                counts[el] += weight * w;
+                counts[el as keyof typeof counts] += weight * w;
             }
         }
     };
+
 
     apply(y.stem, y.branch, 1);
     apply(m.stem, m.branch, 4);
