@@ -1,5 +1,6 @@
 "use client";
 
+import { Analytics } from "@vercel/analytics/next"
 import MaskSilhouette from "./MaskSilhouette";
 import React, { useMemo, useState, useEffect } from "react";
 
@@ -340,6 +341,7 @@ export default function OhengColorApp() {
                                 style={{ background: maskColors.support }}
                             />
                             <div className="text-white text-sm">보조 (Neutral)</div>
+                            <Analytics />
                         </div>
                     </div>
                 </div>
